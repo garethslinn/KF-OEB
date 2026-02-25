@@ -1,8 +1,21 @@
+<!--
+PRODUCT SPLIT SQUARE TEMPLATE
+----------------------------------
+ONLY EDIT VALUES IN THE TOKEN SECTION BELOW.
+DO NOT EDIT STRUCTURE OR STYLES BELOW THE TOKEN BLOCK.
+-->
+
 <div
         style="
+        /* ===== DESIGN TOKENS (SAFE TO EDIT) ===== */
+        --component-width: 20%;
+        --panel-bg: #0b7f2e;
+        --panel-text: #ffffff;
+
+        /* ===== STRUCTURE (DO NOT EDIT BELOW) ===== */
         display: grid;
         grid-template-columns: 2fr 1fr;
-        width: 20%;
+        width: var(--component-width);
         aspect-ratio: 1 / 1;
         font-family: Arial, sans-serif;
         container-type: inline-size;
@@ -10,7 +23,7 @@
     "
 >
 
-    <!-- LEFT: IMAGE -->
+    <!-- ===== IMAGE (EDIT SRC + ALT ONLY) ===== -->
     <div style="height: 100%; overflow: hidden;">
         <img
                 src="images/image3.png"
@@ -24,52 +37,61 @@
         />
     </div>
 
-    <!-- RIGHT: INFO PANEL -->
+    <!-- ===== RIGHT PANEL ===== -->
     <div
             style="
-            /*background: #333333;*/
-            background: #0b7f2e;
-            color: #ffffff;
+            background: var(--panel-bg);
+            color: var(--panel-text);
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 6cqw;
+            align-items: center;
             padding: 6cqw;
-            text-align: left;
             box-sizing: border-box;
             height: 100%;
         "
     >
 
-        <!-- ITEM 1 -->
-        <div>
-            <div style="font-size: 4cqw; line-height: 1.2;">
-                Seed weight:
-            </div>
-            <div style="font-size: 6cqw; font-weight: bold;">
-                0.05g
-            </div>
-        </div>
+        <ul
+                style="
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 6cqw;
+            "
+        >
 
-        <!-- ITEM 2 -->
-        <div>
-            <div style="font-size: 4cqw; line-height: 1.2;">
-                Planting:
-            </div>
-            <div style="font-size: 5cqw; font-weight: bold;">
-                From March to April
-            </div>
-        </div>
+            <!-- EDIT TEXT CONTENT ONLY BELOW -->
 
-        <!-- ITEM 3 -->
-        <div>
-            <div style="font-size: 4cqw; line-height: 1.2;">
-                Flowering:
-            </div>
-            <div style="font-size: 5cqw; font-weight: bold;">
-                From June to October
-            </div>
-        </div>
+            <li style="line-height: 1.2;">
+                <span style="display:block; font-size: 4cqw;">
+                    Seed weight
+                </span>
+                <strong style="font-size: 6cqw;">
+                    0.05g
+                </strong>
+            </li>
+
+            <li style="line-height: 1.2;">
+                <span style="display:block; font-size: 4cqw;">
+                    Planting
+                </span>
+                <strong style="font-size: 5cqw;">
+                    From March to April
+                </strong>
+            </li>
+
+            <li style="line-height: 1.2;">
+                <span style="display:block; font-size: 4cqw;">
+                    Flowering
+                </span>
+                <strong style="font-size: 5cqw;">
+                    From June to October
+                </strong>
+            </li>
+
+        </ul>
 
     </div>
 
