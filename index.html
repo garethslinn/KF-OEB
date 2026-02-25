@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Marketing Template Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+        }
+
+        .section {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 6px;
+            margin-top: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 8px 14px;
+            cursor: pointer;
+        }
+
+        /* Stable preview canvas */
+        .preview {
+            border: 2px dashed #ccc;
+            padding: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+        }
+
+        .preview > div {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Marketing Template Builder</h1>
+
+<div class="section">
+    <h2>Template 1 – Bottom Overlay</h2>
+
+    <div class="grid">
+
+        <div>
+            <label>Image URL</label>
+            <input id="t1-img" value="images/image1.png">
+
+            <label>Alt Text</label>
+            <input id="t1-alt" value="Portable cleaning machine being pulled on rear wheels.">
+
+            <label>Overlay Text</label>
+            <textarea id="t1-text">2 large rear wheels and 2 smaller front wheels for easier manoeuvrability</textarea>
+
+            <label>Width (%)</label>
+            <input type="number" id="t1-width" value="100">
+
+            <button onclick="downloadTemplate()">Download HTML</button>
+            <button onclick="saveTemplate()">Save</button>
+        </div>
+
+        <div class="preview">
+            <div id="preview1"></div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    function renderTemplate() {
+
+        const img = document.getElementById("t1-img").value;
+        const alt = document.getElementById("t1-alt").value;
+        const text = document.getElementById("t1-text").value;
+        const width = document.getElementById("t1-width").value;
+
+        document.getElementById("preview1").innerHTML = `
+<!--
+ACCESSIBLE IMAGE + TEXT BLOCK COMPONENT
+---------------------------------------
+ONLY EDIT IMAGE SRC, ALT TEXT AND CONTENT.
+DO NOT EDIT STRUCTURE OR COLOURS.
+-->
+
+<div
+    style="
+        position: relative;
+        width: ${width}%;
+        aspect-ratio: 1 / 1;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        container-type: inline-size;
+        box-sizing: border-box;
+    "
+>
+
+    <img
+        src="${img}"
+        alt="${alt}"
+        style="
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            display:block;
+        "
+    />
+
+    <div
+        style="
+            position:absolute;
+            bottom:0;
+            left:0;
+            width:100%;
+            height:22%;
+            background-color:#333333;
+            display:flex;
+            align-items:center;
+            box-sizing:border-box;
+        "
+    >
+        <p
+            style="
+                color:#FFFFFF;
+                font-size:5cqw;
+                margin:0;
+                padding:0 5%;
+                line-height:1.15;
+                display:-webkit-box;
+                -webkit-line-clamp:3;
+                -webkit-box-orient:vertical;
+                overflow:hidden;
+            "
+        >
+            ${text}
+        </p>
+    </div>
+
+</div>
+`;
+    }
+
+    function saveTemplate() {
+        localStorage.setItem("template1", document.getElementById("preview1").innerHTML);
+        alert("Saved locally.");
+    }
+
+    function downloadTemplate() {
+        const blob = new Blob(
+            [document.getElementById("preview1").innerHTML],
+            {type:"text/html"}
+        );
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "template1.html";
+        link.click();
+    }
+
+    document.querySelectorAll("input, textarea")
+        .forEach(el => el.addEventListener("input", renderTemplate));
+
+    window.onload = renderTemplate;
+
+</script>
+
+</body>
+</html>

@@ -1,46 +1,47 @@
 <!--
-ACCESSIBLE IMAGE + TEXT BLOCK TEMPLATE
+ACCESSIBLE IMAGE + TEXT BLOCK COMPONENT
 ---------------------------------------
-INSTRUCTIONS FOR MARKETING:
-
-1. Replace the image file path where marked.
-2. Update the ALT TEXT where marked.
-3. Update the TEXT CONTENT where marked.
-4. Do NOT change the dark grey background colour (#333333).
-5. Do NOT change the white text colour (#FFFFFF).
+ONLY EDIT VALUES IN THE TOKEN SECTION.
+DO NOT EDIT STRUCTURE BELOW.
 -->
 
 <div
         style="
-        position: relative;
-        width: 20%;
-        font-family: Arial, sans-serif;
-        overflow: hidden;
+    /* ===== EDITABLE TOKENS ===== */
+    --component-width: 20%;
+    --image-src: url('images/image1.png');
+    --overlay-height: 22%;
 
-        /* Enables container-relative scaling */
-        container-type: inline-size;
-    "
+    /* ===== STRUCTURE (DO NOT EDIT) ===== */
+    position: relative;
+    width: var(--component-width);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    container-type: inline-size;
+    box-sizing: border-box;
+"
 >
 
-    <!-- ===== 1. IMAGE (CHANGE IMAGE SRC + ALT TEXT BELOW) ===== -->
-    <!-- ===== 2. CHANGE ALT TEXT: Describe what is visible in the image (do NOT repeat the marketing sentence below). ===== -->
-
+    <!-- ===== IMAGE (EDIT SRC + ALT ONLY) ===== -->
     <img
             src="images/image1.png"
             alt="Portable cleaning machine being pulled on rear wheels."
+            style="
+            width: 100%;
+            height: auto;
+            display: block;
+        "
+    />
 
-             style="width: 100%; height: auto; display: block;"
-/>
-
-<!-- ===== BOTTOM TEXT BLOCK (DO NOT CHANGE BACKGROUND OR COLOURS) ===== -->
+    <!-- ===== FIXED ACCESSIBLE OVERLAY ===== -->
     <div
             style="
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 22%;
-            background-color: #333333;
+            height: var(--overlay-height);
+            background-color: #333333; /* LOCKED */
             display: flex;
             align-items: center;
             overflow: hidden;
@@ -49,22 +50,18 @@ INSTRUCTIONS FOR MARKETING:
     >
         <p
                 style="
-                color: #FFFFFF;
+                color: #FFFFFF; /* LOCKED */
                 font-size: 5cqw;
-
                 margin: 0;
                 padding: 0 5%;
                 text-align: left;
                 line-height: 1.15;
-
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
             "
         >
-            <!-- ===== 3. CONTENT TEXT BELOW ===== -->
-
             2 large rear wheels and 2 smaller front wheels for easier manoeuvrability
         </p>
     </div>
