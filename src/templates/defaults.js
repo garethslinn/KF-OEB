@@ -2,7 +2,8 @@ export const templateDefaults = {
 
     overlay: {
         // img: "images/image1.png",
-        img: "https://crytec-power.co.uk/cdn/shop/files/38ccchainsaw.png?v=1724159689&width=990",
+        // img: "https://crytec-power.co.uk/cdn/shop/files/38ccchainsaw.png?v=1724159689&width=990",
+        img: "https://crytec-power.co.uk/cdn/shop/files/Crex6-M1.png?v=1770132153&width=1500",
         alt: "Portable cleaning machine being pulled on rear wheels.",
         text: "2 large rear wheels and 2 smaller front wheels for easier manoeuvrability",
         width: 20,
